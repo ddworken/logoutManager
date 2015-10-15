@@ -15,11 +15,14 @@ else:
         print "Could not find the lid state. "
         exit()
 
+lastLoopWasClosed = False
 while True:
     with open(filename) as f:
         state = f.read().splitlines()[0]
     if "open" in state: #if the lid is open
-        lastLoopWasClosed = False
+        if lastLoopWasClosed:
+            lastLoopWasClosed = False
+            system("wifi") #comment this line out if you are not using my wifi script from above
     else: #if the lid is closed
         if not lastLoopWasClosed: #don't lock the computer if we already locked it
             system(sleepCommand)
