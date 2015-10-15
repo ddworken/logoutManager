@@ -1,8 +1,10 @@
 #!/bin/python
 from os.path import isfile
 from os import system
+from time import sleep
 
 sleepCommand = "gnome-screensaver-command -l"
+delay = 1
 
 if isfile("/proc/acpi/button/lid/LID/state"):
     filename = "/proc/acpi/button/lid/LID/state"
@@ -22,3 +24,4 @@ while True:
         if not lastLoopWasClosed:
             system(sleepCommand)
             lastLoopWasClosed = True
+    sleep(delay)
