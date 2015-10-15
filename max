@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo cpufreq-set -u 3300000
